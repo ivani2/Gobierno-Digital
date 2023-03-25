@@ -25,6 +25,14 @@ const pokeInfo = ( {pokemon, descripcionPokemon} ) => {
           borderRadius: "10px",
           maxWidth: "500px"
         },
+        ".textInside": {
+            fontSize: "1vw",
+        },
+        ".buttonSize":{
+            width: "33%",
+            fontSize: "1vw",
+        },
+        "@media (max-width:961px)": { ".buttonSize": { width: "70%" } }
       };
 
 
@@ -47,7 +55,7 @@ const pokeInfo = ( {pokemon, descripcionPokemon} ) => {
                     <img className= " card-img-top" style={ componentStyles[".imgContainer"] } src={pokemon?.sprites.front_default} alt={ pokemon?.name } />
                     <div className="card-body">
                     <h5 className="card-title"> { pokemon?.name } </h5>
-                    <p className="card-text">
+                    <p className="card-text" style={ componentStyles['.textInside'] }>
                         Número en la Pokedex Nacional: { pokemon?.id }
                         <br></br>
                         {/* <Suspense>
@@ -61,7 +69,7 @@ const pokeInfo = ( {pokemon, descripcionPokemon} ) => {
 
 
                     </p>
-                    <Link to={ `/${pokemon?.id}` } className="btn btn-primary">Detalles...</Link>
+                    <Link to={ `/${pokemon?.id}` } className="btn btn-primary" style={ componentStyles['.buttonSize'] }>Detalles...</Link>
                     </div>
                 </div>
             }
