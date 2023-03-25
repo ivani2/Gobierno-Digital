@@ -9,7 +9,7 @@ Ivan Madrigal Pérez
   Para que cualquier equipo pueda ejecutarlo, necesitamos Node.js
   Node.js esta construido en lenguaje C, y dentro, contienen un motor que ejecuta Java. 
   Esa es la magia, desde ahí, podremos ejecutar comandos de Java y así es como instalaremos lo siguiente.
-  # instalaeremos
+  # Instalaremos
     - Instalar Node Package Manager, esto hará que podamos ejecutar sin problema el ambiente para ejecutar: https://nodejs.org/en/download 
     - Una vez instalado, nos tendremos que mover a la carpeta donde tenemos los archivos de este proyecto, sea Windows o Mac, a través de la terminal: 
       Windows: http://www.falconmasters.com/offtopic/como-utilizar-consola-de-windows/
