@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-
+import { useRoutes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import './PokeInfo.css';
@@ -9,10 +9,13 @@ import LoadingComponent from './LoadingComponent';
 // const PokemonDescriptionContext = useContext( PokemonDescriptionContext );
 // const apiData =  fetchData( PokemonDescriptionContext );
 
-const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
-     const descripcion = useContext( PokemonDescriptionContext );
+const pokeInfo = ( {pokemon, pokedex} ) => {
+    const pokedexValueRoute = (pokedex=="kanto") ?  "/kanto" : "";
 
-     const restEndpoint = descripcion;
+    console.log( "pokedexValueRoute : ", pokedexValueRoute );
+    const descripcion = useContext( PokemonDescriptionContext );
+
+    const restEndpoint = descripcion;
 
     const callRestApi = async () => {
         console.log( "Esto debe decir especies; ", restEndpoint );
@@ -88,7 +91,7 @@ const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
                         <br></br>
                         <RenderPokemonDescription></RenderPokemonDescription>
                     </p>
-                    <Link to={ `/${pokemon?.id}` } className="btn btn-primary buttonSize"  style={ componentStyles['.buttonSize'] }>Detalles...</Link>
+                    <Link to={ `${pokedexValueRoute}/${pokemon?.id}` } className="btn btn-primary buttonSize"  style={ componentStyles['.buttonSize'] }>Detalles...</Link>
                     </div>
                 </div>
             }

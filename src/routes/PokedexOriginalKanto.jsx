@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, Outlet } from 'react-router-dom';
 import { Suspense, createContext } from 'react';
 
 import PokePage from '../components/PokePage';
@@ -10,12 +10,11 @@ const PokedexOriginalKanto = ( { stylesMainCardsContainer, pokedex } ) => {
     return(
 
         <>
+        <Outlet />
         <div className="mainCardsContainer" style={ stylesMainCardsContainer }>
-
             <Suspense fallback={ <div>Cargando...</div> } >
                 <PokePage pokemon={ resData } pokedex= { pokedex } />
             </Suspense>
-
         </div>
         </>
 
