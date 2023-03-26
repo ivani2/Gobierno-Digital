@@ -2,9 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { useFetch } from '../useFetch';
-import { fetchData } from '../fetchData';
-
 import './PokeInfo.css';
 import { PokemonDescriptionContext } from './PokePage';
 
@@ -13,6 +10,31 @@ import { PokemonDescriptionContext } from './PokePage';
 
 const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
      const descripcion = useContext( PokemonDescriptionContext );
+
+     const restEndpoint = descripcion;
+
+    const callRestApi = async () => {
+        console.log( "Esto debe decir especies; ", restEndpoint );
+        const response = await fetch(restEndpoint);
+        const jsonResponse = await response.json();
+        console.log(jsonResponse);
+        return (jsonResponse.flavor_text_entries[26]?.flavor_text);
+    };
+
+    function RenderResult() {
+    const [apiResponse, setApiResponse] = useState("Cargando descripcion");
+
+      useEffect(() => {
+          callRestApi().then(
+              result => setApiResponse(result));
+      },[]);
+      return(
+          <strong>
+              {/* { apiResponse } */}
+              { JSON.stringify(apiResponse) }
+          </strong>
+      );
+    };
 
     const componentStyles = {
         ".cardSeparator": {
@@ -39,30 +61,6 @@ const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
         },
       };
 
-    const restEndpoint = descripcion;
-
-    const callRestApi = async () => {
-        console.log( "Esto debe decir especies; ", restEndpoint );
-        const response = await fetch(restEndpoint);
-        const jsonResponse = await response.json();
-        console.log(jsonResponse);
-        return (jsonResponse.flavor_text_entries[26]?.flavor_text);
-    };
-
-    function RenderResult() {
-      const [apiResponse, setApiResponse] = useState("Cargando descripcion");
-
-      useEffect(() => {
-          callRestApi().then(
-              result => setApiResponse(result));
-      },[]);
-      return(
-          <strong>
-              {/* { apiResponse } */}
-              { JSON.stringify(apiResponse) }
-          </strong>
-      );
-    };
     return (
         <>
             {
