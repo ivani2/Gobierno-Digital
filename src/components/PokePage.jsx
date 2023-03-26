@@ -13,6 +13,7 @@ const PokePage = ( {pokemon} ) => {
         const { data } = useFetch( url );
         console.log( data?.species.url );
         desc = data?.species.url;
+        // desc = descripcionPokemon( data?.species.url );
         // const desc = descripcionPokemon( data?.species.url );
         // console.log( "URL PARA OBTENER DESCRIPCION: ", desc );
         return data;
@@ -22,7 +23,7 @@ const PokePage = ( {pokemon} ) => {
         // console.log( url );
         // let { data } = useFetch( url );
         // console.log( data?.species.url );
-        //  data = useFetch( data?.species.url );
+        // //  data = useFetch( data?.species.url );
         //  console.log( "descripcion url", data );
         //  return data.flavor_text_entries[26] ? data?.flavor_text_entries[26]?.flavor_text : undefined
     }
