@@ -1,4 +1,4 @@
-import { useLoaderData, Link, useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import ModalPokemon from '../components/ModalPokemon'
 
@@ -10,9 +10,7 @@ const PokemonDetails = () => {
 
   const resData = useLoaderData();
   const navigate = useNavigate();
-  // const isModalOpen = useContext(isModalOpen);
-  // const setIsModalOpen =  useContext({setIsModalOpen});
-  // console.log("URL PARA LA DESCRIPCION ", resData.species.url );
+
   return(
     <>
     <ReactModal isOpen={true} shouldCloseOnOverlayClick={true} shouldCloseOnEsc={true}  className={ classes.modalStyles } >
@@ -28,7 +26,7 @@ const PokemonDetails = () => {
 export default PokemonDetails;
 
 export async function loader( {params} ){
-    console.log( "loader sabe esto: " + params.pokemonNumber );
+    // console.log( "loader sabe esto: " + params.pokemonNumber );
     const response =  await fetch( 'http://pokeapi.co/api/v2/pokemon/'+ params.pokemonNumber );
     const resData = await response.json();
     console.log( resData );

@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, createContext } from 'react';
 
 import { Outlet } from 'react-router-dom';
 
@@ -10,32 +10,18 @@ import '../index.css'
 
 const apiData =  fetchData( "https://pokeapi.co/api/v2/pokemon/" );
 
-function PokedexPagination( { stylesMainCardsContainer } ) {
+function PokedexPagination( { stylesMainCardsContainer, pokedex } ) {
 
   const data = apiData.read();
-
-
-
   return (
     <>
       {/* <h1>ABORTAR UNA CARGA DE API</h1> */}
       {/* <button onClick={ handleCancelRequest } className="btn btn-danger" >Cancel Request</button> */}
       <Outlet />
       <div className="mainCardsContainer" style={ stylesMainCardsContainer }>
-
-        {/* {
-          error && <li> Error { error } </li>
-        } */}
-        {
-          // loading && <li>loading... </li>
-          <Suspense fallback={ <div>Loading...</div> } >
-            <PokePage pokemon={ data } />
+          <Suspense fallback={ <div>Cargando...</div> } >
+            <PokePage pokemon={ data } pokedex= { pokedex } />
           </Suspense>
-        }
-        {/* {
-            ( data ) && ( <PokePage pokemon={ data } /> )
-        } */}
-
       </div>
     </>
   )
