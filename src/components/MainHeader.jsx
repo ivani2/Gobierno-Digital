@@ -9,6 +9,7 @@ function MainHeader(  ) {
       borderBottom: "2px solid #ece1fa",
       backgroundColor: "#8c6cf7 !important",
       color: "white",
+      fontSize: "4vw",
     },
     ".pokeLogoContainer": {
       width: "40px",
@@ -28,9 +29,7 @@ function MainHeader(  ) {
         <Link className="nav-link px-2 link-secondary" to='/'>Pokedex</Link>
         <Link className="nav-link px-2 link-dark" to='/kanto'>Primeros 151</Link>
         <Link className="nav-link px-2 link-dark" to='/25'>Pikachu</Link>
-      <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="https://pokeapi.co/docs/graphql" className="nav-link px-2 link-dark">Api_Docs</a></li>
-      </ul>
+        <h5><a href="https://pokeapi.co/docs/graphql" className="nav-link px-2 link-dark">Api_Docs</a></h5>
     </header>
 
   );
