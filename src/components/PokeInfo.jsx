@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-
+import { useRoutes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import './PokeInfo.css';
@@ -9,7 +9,7 @@ import LoadingComponent from './LoadingComponent';
 // const PokemonDescriptionContext = useContext( PokemonDescriptionContext );
 // const apiData =  fetchData( PokemonDescriptionContext );
 
-const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
+const pokeInfo = ( {pokemon, pokedex} ) => {
      const descripcion = useContext( PokemonDescriptionContext );
 
      const restEndpoint = descripcion;
@@ -88,7 +88,7 @@ const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
                         <br></br>
                         <RenderPokemonDescription></RenderPokemonDescription>
                     </p>
-                    <Link to={ `/${pokemon?.id}` } className="btn btn-primary buttonSize"  style={ componentStyles['.buttonSize'] }>Detalles...</Link>
+                    <Link to={ `/${pokedex}/${pokemon?.id}` } className="btn btn-primary buttonSize"  style={ componentStyles['.buttonSize'] }>Detalles...</Link>
                     </div>
                 </div>
             }

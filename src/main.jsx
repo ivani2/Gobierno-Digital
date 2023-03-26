@@ -39,6 +39,13 @@ const router = createBrowserRouter([
         path: '/kanto',
         element: <PokedexOriginalKanto stylesMainCardsContainer = { stylesMainCardsContainer } pokedex= { "kanto" } />,
         loader: pokedexOriginalKantoLoader,
+        children: [
+          {
+            path: '/kanto/:pokemonNumber',
+            element: <PokemonDetails />,
+            loader: pokemonDetailsLoader,
+          }
+        ]
       }
     ]
   },
