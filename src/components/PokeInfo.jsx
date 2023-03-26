@@ -1,18 +1,18 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
 import { useFetch } from '../useFetch';
+import { fetchData } from '../fetchData';
 
 import './PokeInfo.css';
+import { PokemonDescriptionContext } from './PokePage';
 
+// const PokemonDescriptionContext = useContext( PokemonDescriptionContext );
+// const apiData =  fetchData( PokemonDescriptionContext );
 
-
-// const apiData =  fetchData( pokemon?.species.url );
-
-const pokeInfo = ( {pokemon, descripcionPokemon} ) => {
-    // console.log( pokemon )
-    // const dataPokemonDescription = apiData.read();
+const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
+     const descripcion = useContext( PokemonDescriptionContext );
 
     const componentStyles = {
         ".cardSeparator": {
@@ -37,20 +37,34 @@ const pokeInfo = ( {pokemon, descripcionPokemon} ) => {
             width: "33%",
             fontSize: "1vw",
         },
-        // "@media (max-width:961px)": { ".buttonSize": { width: "70%" } }
       };
 
+    const restEndpoint = descripcion;
 
-    function descripcionPokemon_fetch( url ){
-        console.log( "descripcionPokemon_fetch ",url )
-        const { data } = useFetch( url );
-        console.log( data ? data?.flavor_text_entries[26]?.flavor_text : null )
-        // return data?.flavor_text_entries?.flavor_text
-        return data ? data?.flavor_text_entries[26]?.flavor_text : null
-    }
+    const callRestApi = async () => {
+        console.log( "Esto debe decir especies; ", restEndpoint );
+        const response = await fetch(restEndpoint);
+        const jsonResponse = await response.json();
+        console.log(jsonResponse);
+        return (jsonResponse.flavor_text_entries[26]?.flavor_text);
+    };
 
+    function RenderResult() {
+      const [apiResponse, setApiResponse] = useState("Cargando descripcion");
+
+      useEffect(() => {
+          callRestApi().then(
+              result => setApiResponse(result));
+      },[]);
+
+      return(
+          <strong>
+              {/* { apiResponse } */}
+              { JSON.stringify(apiResponse) }
+          </strong>
+      );
+    };
     return (
-
         <>
             {
                 (!pokemon) && <h1> "Cargando pokemon" </h1>
@@ -63,16 +77,7 @@ const pokeInfo = ( {pokemon, descripcionPokemon} ) => {
                     <p className="card-text" style={ componentStyles['.textInside'] } >
                         Número en la Pokedex Nacional: { pokemon?.id }
                         <br></br>
-                        {/* <Suspense>
-                            <strong> { descripcionPokemon_fetch( pokemon?.species.url ) } </strong>
-                        </Suspense> */}
-                        {/* <PokemonDescription url={ descripcionPokemon(pokemon?.species.url) } /> */}
-                        {/* <strong> { descripcionPokemon( pokemon?.species.url ) } </strong> */}
-                        {/* <strong> { descripcionPokemon_fetch(descripcionPokemon) } </strong> */}
-                        <strong> { descripcionPokemon } </strong>
-
-
-
+                        <RenderResult></RenderResult>
                     </p>
                     <Link to={ `/${pokemon?.id}` } className="btn btn-primary buttonSize"  style={ componentStyles['.buttonSize'] }>Detalles...</Link>
                     </div>

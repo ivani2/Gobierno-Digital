@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { createContext } from 'react';
 
 import PokeInfo from './PokeInfo'
 
 import { useFetch } from '../useFetch'
 
-const PokePage = ( {pokemon} ) => {
+export const PokemonDescriptionContext = createContext();
+
+const PokePage = ( {pokemon, pokedex} ) => {
 
     let desc = "";
 
@@ -13,21 +15,14 @@ const PokePage = ( {pokemon} ) => {
         const { data } = useFetch( url );
         console.log( data?.species.url );
         desc = data?.species.url;
-        // desc = descripcionPokemon( data?.species.url );
-        // const desc = descripcionPokemon( data?.species.url );
-        // console.log( "URL PARA OBTENER DESCRIPCION: ", desc );
         return data;
     }
 
-    function descripcionPokemon( url ){
-        // console.log( url );
-        // let { data } = useFetch( url );
-        // console.log( data?.species.url );
-        // //  data = useFetch( data?.species.url );
-        //  console.log( "descripcion url", data );
-        //  return data.flavor_text_entries[26] ? data?.flavor_text_entries[26]?.flavor_text : undefined
+    function pokemonDescriptionUrl( pokemonUrlData ){
+        console.log( pokemonUrlData );
+        const { data } = useFetch( pokemonUrlData );
+        return data?.species.url;
     }
-    // console.log( pokemon.results )
     return (
         <>
 
@@ -36,12 +31,9 @@ const PokePage = ( {pokemon} ) => {
             }
             {
                 pokemon.results.map( ( poke ) => (
-                    // console.log( getPokemonData(poke.url) )
-                    <PokeInfo pokemon={ getPokemonData( poke.url ) } key={ poke.url } descripcionPokemon={ desc } />
-                    // <Suspense>
-                    //     <PokeInfo pokemon={  apiData.read() } key={ poke.url } />
-                    // </Suspense>
-
+                    <PokemonDescriptionContext.Provider value= { pokemonDescriptionUrl( poke.url ) } >
+                        <PokeInfo pokemon={ getPokemonData( poke.url ) } key={ poke.url } descripcionPokemon={ desc } pokedex={ pokedex } />
+                    </PokemonDescriptionContext.Provider>
                 ) )
             }
 
