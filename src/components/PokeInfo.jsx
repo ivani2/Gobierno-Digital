@@ -10,9 +10,12 @@ import LoadingComponent from './LoadingComponent';
 // const apiData =  fetchData( PokemonDescriptionContext );
 
 const pokeInfo = ( {pokemon, pokedex} ) => {
-     const descripcion = useContext( PokemonDescriptionContext );
+    const pokedexValueRoute = (pokedex=="kanto") ?  "/kanto" : "";
 
-     const restEndpoint = descripcion;
+    console.log( "pokedexValueRoute : ", pokedexValueRoute );
+    const descripcion = useContext( PokemonDescriptionContext );
+
+    const restEndpoint = descripcion;
 
     const callRestApi = async () => {
         console.log( "Esto debe decir especies; ", restEndpoint );
@@ -88,7 +91,7 @@ const pokeInfo = ( {pokemon, pokedex} ) => {
                         <br></br>
                         <RenderPokemonDescription></RenderPokemonDescription>
                     </p>
-                    <Link to={ `/${pokedex}/${pokemon?.id}` } className="btn btn-primary buttonSize"  style={ componentStyles['.buttonSize'] }>Detalles...</Link>
+                    <Link to={ `${pokedexValueRoute}/${pokemon?.id}` } className="btn btn-primary buttonSize"  style={ componentStyles['.buttonSize'] }>Detalles...</Link>
                     </div>
                 </div>
             }
