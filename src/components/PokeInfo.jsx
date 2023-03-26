@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './PokeInfo.css';
 import { PokemonDescriptionContext } from './PokePage';
+import LoadingComponent from './LoadingComponent';
 
 // const PokemonDescriptionContext = useContext( PokemonDescriptionContext );
 // const apiData =  fetchData( PokemonDescriptionContext );
@@ -21,18 +22,26 @@ const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
         return (jsonResponse.flavor_text_entries[26]?.flavor_text);
     };
 
-    function RenderResult() {
-    const [apiResponse, setApiResponse] = useState("Cargando descripcion");
+    function RenderPokemonDescription() {
+    const [apiResponse, setApiResponse] = useState("Cargando...");
 
       useEffect(() => {
           callRestApi().then(
               result => setApiResponse(result));
       },[]);
       return(
+        <>
+        { ( apiResponse =="Cargando..." ) && ( <LoadingComponent /> ) }
           <strong>
-              {/* { apiResponse } */}
-              { JSON.stringify(apiResponse) }
+              {/* { apiResponse } <= this is an object*/}
+              {/* { (JSON.stringify(apiResponse)).replace( /\r?\n|\r/, "" ) } */}
+              { JSON.stringify(apiResponse, function (key, value) {
+                                                return value = value.replace(/(?:\r\n|\r|\n)/g, ' ');
+                                            }
+                                )
+              }
           </strong>
+        </>
       );
     };
 
@@ -77,7 +86,7 @@ const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
                     <p className="card-text" style={ componentStyles['.textInside'] } >
                         Número en la Pokedex Nacional: { pokemon?.id }
                         <br></br>
-                        <RenderResult></RenderResult>
+                        <RenderPokemonDescription></RenderPokemonDescription>
                     </p>
                     <Link to={ `/${pokemon?.id}` } className="btn btn-primary buttonSize"  style={ componentStyles['.buttonSize'] }>Detalles...</Link>
                     </div>
