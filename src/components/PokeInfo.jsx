@@ -56,7 +56,6 @@ const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
           callRestApi().then(
               result => setApiResponse(result));
       },[]);
-
       return(
           <strong>
               {/* { apiResponse } */}
@@ -73,7 +72,10 @@ const pokeInfo = ( {pokemon, descripcionPokemon, pokedex} ) => {
                 <div className= 'card' style={ componentStyles[".cardSeparator"] }>
                     <img className= " card-img-top" style={ componentStyles[".imgContainer"] } src={pokemon?.sprites.front_default} alt={ pokemon?.name } />
                     <div className="card-body">
-                    <h5 className="card-title"> { pokemon?.name } </h5>
+                        {
+                        //.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {return index === 0 ? word.toLowerCase() : word.toUpperCase();}).replace(/\s+/g, '')
+                        }
+                    <h5 className="card-title"> { pokemon?.name.toUpperCase() } </h5>
                     <p className="card-text" style={ componentStyles['.textInside'] } >
                         Número en la Pokedex Nacional: { pokemon?.id }
                         <br></br>
