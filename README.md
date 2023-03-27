@@ -47,5 +47,8 @@ Para la siguiente ruta, es practicamente una prueba sencilla de utilización de 
 PokemonDetails.jsx, sin embargo, es uno de mis componentes favoritos, ya que recibe directamente cualquier número de Pokemon en la ruta, hace la petición API fetch con un loader y nos envía directamente un modal muy bonito con imagenes diferentes del Pokemon, este si es un gran ejemplo de lo util que es la utilización de loaders para asegurar una carga buena de los componentes en la ruta, y además me parece muy elegante que solo se escriba el número del Pokemon.
 Otro componente que me gusta bastante y que nos encontramos en esta línea del modal, es el carrusel de imágenes, pero quiero hacer notar que puede ser aún más dinámico, la intención era demostrar que me documenté de manera adecuada sobre que datos nos arroja la Api de Pokemon, respecto a los sprites, y la verdad es que es un carrusel que podría fácilmente recibir cualquier cantidad de imagenes, desplegarlas con un //.map pero aquí es una demostración controlada porque estoy familiarizado con los sprites. 
 
+#Finalmente,
+  toda la aplicación es absolutamente mejorable, sobre todo en como carga algunos elementos y mejorar el enrutado de algunos elementos, pero el potencial base, considero esta ahí, y sobre todo, una reutilización y estructura de carpetas bastante entendible, un buen reto fue no utilizar librerías que hicieran el trabajo de hacer fetch, por eso mismo, reconozco que estas aproximaciones son sumamente mejorables, mi familiaridad con React sigue creciendo, así como mi entusiasmo por participar en proyectos de este estilo y encontrarme con colegas que me guíen para el mejor camino de la programación. Gracias por leerme.  
+
 */
 
