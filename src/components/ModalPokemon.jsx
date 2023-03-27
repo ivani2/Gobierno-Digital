@@ -52,13 +52,12 @@ const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
                     <strong> { descripcionPokemon_fetch(descripcionPokemon) } </strong>
                 </Suspense>
                 <br></br>
+                </p>
                 <span>Tipo de Pokemon: </span>
                 <ul>
                     <li><span> {pokemon?.types[0]?.type?.name } </span> : <span> {pokemon?.types[0]?.type?.url } </span></li>
                     <li><span> {pokemon?.types[1]?.type?.name } </span> : <span> {pokemon?.types[1]?.type?.url } </span></li>
                 </ul>
-
-                </p>
                 {/* <button className='btn btn-danger' onClick={ ()=> navigate(-1) } >Cerrar</button> */}
                 {/* <button className='btn btn-danger' onClick={ ()=> isModalOpen = false } >Cerrar</button> */}
                 </div>
