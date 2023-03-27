@@ -75,7 +75,7 @@ const pokeInfo = ( {pokemon, pokedex} ) => {
     return (
         <>
             {
-                (!pokemon) && <h1> "Cargando pokemon" </h1>
+                (!pokemon) && ( <><span>Espera un momento.</span><LoadingComponent /></> )
             }
             {
                 <div className= 'card' style={ componentStyles[".cardSeparator"] }>
