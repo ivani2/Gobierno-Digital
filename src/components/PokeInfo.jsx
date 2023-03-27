@@ -88,7 +88,7 @@ const pokeInfo = ( {pokemon, pokedex} ) => {
                     <p className="card-text" style={ componentStyles['.textInside'] } >
                         Número en la Pokedex Nacional: { pokemon?.id }
                         <br></br>
-                        <RenderPokemonDescription></RenderPokemonDescription>
+                        <RenderPokemonDescription key={ pokemon?.id } ></RenderPokemonDescription>
                     </p>
                     <Link to={ `${pokedexValueRoute}/${pokemon?.id}` } className="btn btn-primary buttonSize"  style={ componentStyles['.buttonSize'] }>Detalles...</Link>
                     </div>
