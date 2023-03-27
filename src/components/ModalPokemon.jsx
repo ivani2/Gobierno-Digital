@@ -25,9 +25,9 @@ const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
 
 
     function descripcionPokemon_fetch( url ){
-        console.log( "descripcionPokemon_fetch ",url )
+        // console.log( "descripcionPokemon_fetch ",url )
         const { data } = useFetch( url );
-        console.log(" esto deberia ser la descripcion: ", data ? data?.flavor_text_entries[26]?.flavor_text : null )
+        // console.log(" esto deberia ser la descripcion: ", data ? data?.flavor_text_entries[26]?.flavor_text : null )
         return data ? data?.flavor_text_entries[26]?.flavor_text : null
     }
 
@@ -51,6 +51,13 @@ const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
                 <Suspense fallback={ <div>Loading...</div> } >
                     <strong> { descripcionPokemon_fetch(descripcionPokemon) } </strong>
                 </Suspense>
+                <br></br>
+                <span>Tipo de Pokemon: </span>
+                <ul>
+                    <li><span> {pokemon?.types[0]?.type?.name } </span> : <span> {pokemon?.types[0]?.type?.url } </span></li>
+                    <li><span> {pokemon?.types[1]?.type?.name } </span> : <span> {pokemon?.types[1]?.type?.url } </span></li>
+                </ul>
+
                 </p>
                 {/* <button className='btn btn-danger' onClick={ ()=> navigate(-1) } >Cerrar</button> */}
                 {/* <button className='btn btn-danger' onClick={ ()=> isModalOpen = false } >Cerrar</button> */}

@@ -10,9 +10,9 @@ import LoadingComponent from './LoadingComponent';
 // const apiData =  fetchData( PokemonDescriptionContext );
 
 const pokeInfo = ( {pokemon, pokedex} ) => {
+
     const pokedexValueRoute = (pokedex=="kanto") ?  "/kanto" : "";
 
-    console.log( "pokedexValueRoute : ", pokedexValueRoute );
     const descripcion = useContext( PokemonDescriptionContext );
 
     const restEndpoint = descripcion;
@@ -21,7 +21,7 @@ const pokeInfo = ( {pokemon, pokedex} ) => {
         console.log( "Esto debe decir especies; ", restEndpoint );
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
-        console.log(jsonResponse);
+        // console.log(jsonResponse);
         return (jsonResponse.flavor_text_entries[26]?.flavor_text);
     };
 
@@ -37,7 +37,6 @@ const pokeInfo = ( {pokemon, pokedex} ) => {
         { ( apiResponse =="Cargando..." ) && ( <LoadingComponent /> ) }
           <strong>
               {/* { apiResponse } <= this is an object*/}
-              {/* { (JSON.stringify(apiResponse)).replace( /\r?\n|\r/, "" ) } */}
               { JSON.stringify(apiResponse, function (key, value) {
                                                 return value = value.replace(/(?:\r\n|\r|\n)/g, ' ');
                                             }
