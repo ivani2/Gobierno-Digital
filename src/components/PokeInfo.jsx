@@ -54,7 +54,8 @@ const pokeInfo = ( {pokemon, pokedex} ) => {
             marginLeft: "1%",
             marginRight: "1%",
             marginBottom: "2%",
-            height: "20%"
+            height: "20%",
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
         },
         ".imgContainer": {
           width: "100%",
