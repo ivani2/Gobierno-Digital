@@ -7,7 +7,6 @@ function MainHeader(  ) {
   const componentStyles = {
     ".headerSpecial": {
       borderBottom: "2px solid #ece1fa",
-      backgroundColor: "#8c6cf7 !important",
       color: "white",
       fontSize: "2vw",
     },
