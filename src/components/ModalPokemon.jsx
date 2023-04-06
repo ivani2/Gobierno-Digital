@@ -3,7 +3,7 @@ import { Suspense, useState, useEffect } from 'react';
 import ImagesCarousel from './ImagesCarousel';
 import LoadingComponent from './LoadingComponent';
 
-import { useFetch } from '../useFetch';
+// import { useFetch } from '../useFetch';
 
 
 
@@ -94,8 +94,6 @@ const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
                     <li><span> {pokemon?.types[0]?.type?.name } </span> : <span> {pokemon?.types[0]?.type?.url } </span></li>
                     <li><span> {pokemon?.types[1]?.type?.name } </span> : <span> {pokemon?.types[1]?.type?.url } </span></li>
                 </ul>
-                {/* <button className='btn btn-danger' onClick={ ()=> navigate(-1) } >Cerrar</button> */}
-                {/* <button className='btn btn-danger' onClick={ ()=> isModalOpen = false } >Cerrar</button> */}
                 </div>
             </div>
         }
