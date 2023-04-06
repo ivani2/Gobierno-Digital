@@ -33,7 +33,7 @@ const pokeInfo = ( {pokemon, pokedex} ) => {
       },[]);
       return(
         <>
-        { ( apiResponse =="Cargando..." ) && ( <LoadingComponent /> ) }
+        { ( apiResponse == "Cargando..." ) && ( <LoadingComponent /> ) }
           <strong>
               {/* { apiResponse } <= this is an object*/}
               { JSON.stringify(apiResponse, function (key, value) {
@@ -75,7 +75,7 @@ const pokeInfo = ( {pokemon, pokedex} ) => {
     return (
         <>
             {
-                (!pokemon) && ( <><span>Espera un momento.</span><LoadingComponent /></> )
+                (!pokemon) && ( <><LoadingComponent /></> )
             }
             {
                 <div className= 'card' style={ componentStyles[".cardSeparator"] }>

@@ -1,8 +1,10 @@
 import { createContext } from 'react';
 
-import PokeInfo from './PokeInfo'
+import LoadingComponent from './LoadingComponent';
 
 import { useFetch } from '../useFetch'
+
+import PokeInfo from './PokeInfo'
 
 export const PokemonDescriptionContext = createContext();
 
@@ -27,7 +29,7 @@ const PokePage = ( {pokemon, pokedex} ) => {
         <>
 
             {
-                (!pokemon) && <img src="../assets/poke.gif" height="200px"width="200px"/>
+                (!pokemon) && <LoadingComponent />
             }
             {
                 pokemon.results.map( ( poke ) => (
