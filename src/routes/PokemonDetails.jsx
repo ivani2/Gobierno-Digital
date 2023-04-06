@@ -25,7 +25,7 @@ const PokemonDetails = () => {
 export default PokemonDetails;
 
 export async function loader( {params} ){
-    // console.log( "loader sabe esto: " + params.pokemonNumber );
+    console.log( "loader sabe el pokemon id: " + params.pokemonNumber );
     const response =  await fetch( 'http://pokeapi.co/api/v2/pokemon/'+ params.pokemonNumber );
     const resData = await response.json();
     console.log( resData );
