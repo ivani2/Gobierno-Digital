@@ -13,9 +13,9 @@ const PokemonDetails = () => {
 
   return(
     <>
-    <ReactModal isOpen={true} preventScroll={ true }  className={ classes.modalStyles } >
+    <ReactModal isOpen={true} className={ classes.modalStyles } >
       <ModalPokemon pokemon={resData} key={resData.url} descripcionPokemon={ resData.species.url } />
-      <button className='btn btn-danger' onClick={ ()=> navigate(-1) } >Cerrar</button>
+      <button className='btn btn-danger' onClick={ ()=> navigate('..') } >Cerrar</button>
     </ReactModal>
     </>
   );

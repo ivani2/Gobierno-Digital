@@ -6,7 +6,7 @@ const ImagesCarousel = ( images ) => {
     console.log( images.images )
     const imageStyles = {
        ".cardExternal": {maxHeight: "300px"},
-       ".imageInside": { width: "50% !important", height: "20% !important" }
+       ".imageInside": { margin: "auto" }
     }
     return (
         <>
