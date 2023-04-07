@@ -1,10 +1,10 @@
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
-import ModalPokemon from '../components/ModalPokemon'
+import ModalPokemon from '../components/ModalPokemon';
 
 import ReactModal from 'react-modal';
 
-import classes from './PokemonDetails.module.css'
+import classes from './PokemonDetails.module.css';
 
 const PokemonDetails = () => {
 
@@ -15,7 +15,6 @@ const PokemonDetails = () => {
     <>
     <ReactModal isOpen={true} className={ classes.modalStyles } >
       <ModalPokemon pokemon={resData} key={resData.url} descripcionPokemon={ resData.species.url } />
-      <button className='btn btn-danger' onClick={ ()=> navigate('..') } >Cerrar</button>
     </ReactModal>
     </>
   );

@@ -1,10 +1,11 @@
 import { Suspense, useState, useEffect } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import ImagesCarousel from './ImagesCarousel';
 import LoadingComponent from './LoadingComponent';
 
 // import { useFetch } from '../useFetch';
-
 
 
 const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
@@ -17,13 +18,14 @@ const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
             display: "flex",
         },
         ".imgContainer": {
-          width: "100%",
-          height: "auto",
-          borderRadius: "10px",
-          maxWidth: "500px"
+            width: "100%",
+            height: "auto",
+            borderRadius: "10px",
+            maxWidth: "500px"
         },
-      };
+    };
 
+    const navigate = useNavigate();
 
     const restEndpoint = descripcionPokemon;
 
@@ -94,6 +96,7 @@ const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
                     <li><span> {pokemon?.types[0]?.type?.name } </span> : <span> {pokemon?.types[0]?.type?.url } </span></li>
                     <li><span> {pokemon?.types[1]?.type?.name } </span> : <span> {pokemon?.types[1]?.type?.url } </span></li>
                 </ul>
+                <button className='btn btn-danger' onClick={ ()=> navigate('..') } >Cerrar</button>
                 </div>
             </div>
         }

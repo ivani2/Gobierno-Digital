@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import RootLayout from "./routes/RootLayout"
 import PokedexPagination from "./routes/PokedexPagination"
 import PokemonDetails, { loader as pokemonDetailsLoader } from "./routes/PokemonDetails"
+import PokemonRouteModal, { loader as pokemonRouteModalLoader } from './routes/PokemonRouteModal'
 import PokedexOriginalKanto, { loader as pokedexOriginalKantoLoader } from './routes/PokedexOriginalKanto'
 
 import './index.css'
@@ -30,10 +31,15 @@ const router = createBrowserRouter([
         path: '/',
         element: <PokedexPagination stylesMainCardsContainer = { stylesMainCardsContainer } pokedex={ "" } />,
         children: [
+          // {
+          //   path: '/:pokemonNumber',
+          //   element: <PokemonDetails />,
+          //   loader: pokemonDetailsLoader,
+          // }
           {
             path: '/:pokemonNumber',
-            element: <PokemonDetails />,
-            loader: pokemonDetailsLoader,
+            element: <PokemonRouteModal />,
+            loader: pokemonRouteModalLoader,
           }
         ]
       },
@@ -42,10 +48,15 @@ const router = createBrowserRouter([
         element: <PokedexOriginalKanto stylesMainCardsContainer = { stylesMainCardsContainer } pokedex= { "kanto" } />,
         loader: pokedexOriginalKantoLoader,
         children: [
+          // {
+          //   path: '/kanto/:pokemonNumber',
+          //   element: <PokemonDetails />,
+          //   loader: pokemonDetailsLoader,
+          // }
           {
             path: '/kanto/:pokemonNumber',
-            element: <PokemonDetails />,
-            loader: pokemonDetailsLoader,
+            element: <PokemonRouteModal />,
+            loader: pokemonRouteModalLoader,
           }
         ]
       }
