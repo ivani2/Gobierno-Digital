@@ -30,7 +30,7 @@ const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
     const restEndpoint = descripcionPokemon;
 
     const callRestApi = async () => {
-        console.log( "Esto debe decir especies; ", restEndpoint );
+        console.log( "Esto debe decir especies, por parte del componente modal; ", restEndpoint );
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
         // console.log(jsonResponse);
