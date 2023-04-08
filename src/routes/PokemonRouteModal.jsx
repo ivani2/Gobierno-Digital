@@ -12,7 +12,7 @@ const PokemonRouteModal = () => {
     const loaderData = useLoaderData();
 
 
-    const restEndpoint = 'http://pokeapi.co/api/v2/pokemon/'+ loaderData;
+    const restEndpoint = 'https://pokeapi.co/api/v2/pokemon/'+ loaderData;
 
     const [apiResponse, setApiResponse] = useState("Cargando...");
     const [pokemonDescription, setPokemonDescription] = useState("Cargando...");
