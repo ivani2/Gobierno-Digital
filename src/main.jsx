@@ -31,16 +31,16 @@ const router = createBrowserRouter([
         path: '/',
         element: <PokedexPagination stylesMainCardsContainer = { stylesMainCardsContainer } pokedex={ "" } />,
         children: [
-          // {
-          //   path: '/:pokemonNumber',
-          //   element: <PokemonDetails />,
-          //   loader: pokemonDetailsLoader,
-          // }
           {
             path: '/:pokemonNumber',
-            element: <PokemonRouteModal />,
-            loader: pokemonRouteModalLoader,
+            element: <PokemonDetails />,
+            loader: pokemonDetailsLoader,
           }
+          // {
+          //   path: '/:pokemonNumber',
+          //   element: <PokemonRouteModal />,
+          //   loader: pokemonRouteModalLoader,
+          // }
         ]
       },
       {
@@ -48,16 +48,16 @@ const router = createBrowserRouter([
         element: <PokedexOriginalKanto stylesMainCardsContainer = { stylesMainCardsContainer } pokedex= { "kanto" } />,
         loader: pokedexOriginalKantoLoader,
         children: [
-          // {
-          //   path: '/kanto/:pokemonNumber',
-          //   element: <PokemonDetails />,
-          //   loader: pokemonDetailsLoader,
-          // }
           {
             path: '/kanto/:pokemonNumber',
-            element: <PokemonRouteModal />,
-            loader: pokemonRouteModalLoader,
+            element: <PokemonDetails />,
+            loader: pokemonDetailsLoader,
           }
+          // {
+          //   path: '/kanto/:pokemonNumber',
+          //   element: <PokemonRouteModal />,
+          //   loader: pokemonRouteModalLoader,
+          // }
         ]
       }
     ]
