@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import ImagesCarousel from './ImagesCarousel';
 import LoadingComponent from './LoadingComponent';
 
-// import { useFetch } from '../useFetch';
+import { useFetch } from '../useFetch';
 
 
 const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
 
+    console.log( " desde modal pokemon NO regular " );
     const componentStyles = {
         ".pokemonModalContainer": {
             position: "relative",
@@ -30,6 +31,7 @@ const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
     const restEndpoint = descripcionPokemon;
 
     const callRestApi = async () => {
+        /* USANDO UN LLAMADO API NORMAL  */
         console.log( "Esto debe decir especies, por parte del componente modal; ", restEndpoint );
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
@@ -40,10 +42,19 @@ const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
     function RenderPokemonDescriptionForModal() {
     const [apiResponse, setApiResponse] = useState("Cargando...");
 
+    /* useEffect normalito con el API NORMAL */
       useEffect(() => {
           callRestApi().then(
               result => setApiResponse(result));
       },[]);
+
+
+    /* useEffect con USE FECTH */
+    // useEffect(() => {
+    //     // setApiResponse(descripcionPokemon_fetch(restEndpoint));
+    //     descripcionPokemon_fetch(restEndpoint)
+    // },[]);
+
       return(
         <>
         { ( apiResponse == "Cargando..." ) && ( <LoadingComponent /> ) }
@@ -59,11 +70,14 @@ const ModalPokemon = ( {pokemon, descripcionPokemon} ) => {
       );
     };
 
-    // function descripcionPokemon_fetch( url ){
-    //     // console.log( "descripcionPokemon_fetch ",url )
+    // const descripcionPokemon_fetch = async ( url ) => {
+    //     console.log( "descripcionPokemon_fetch ",url )
+    //     console.log( "Esto debe decir especies DESDE USE FETCH EN ModalPokemon, por parte del componente modal; ", url );
     //     const { data } = useFetch( url );
-    //     // console.log(" esto deberia ser la descripcion: ", data ? data?.flavor_text_entries[26]?.flavor_text : null )
-    //     return data ? data?.flavor_text_entries[26]?.flavor_text : null
+    //     console.log("esto deberia ser la descripcion: ",data?.flavor_text_entries[26]?.flavor_text )
+    //     // return data ? data?.flavor_text_entries[26]?.flavor_text : null
+    //     setApiResponse(data?.flavor_text_entries[26]?.flavor_text);
+
     // }
 
 
